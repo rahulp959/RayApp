@@ -5,6 +5,26 @@
 
 ---
 
+## [0.0.3] — 2026-02-27
+
+### Changed (internal)
+- Added Prettier (`prettier --check/--write` wired into `npm run lint` / `npm run format`)
+- Added Jest via `jest-expo` preset with `@testing-library/react-native`; `npm run test` passes sanity test
+- Added `npm run type-check` (`tsc --noEmit`)
+- Added husky v9 pre-commit hook: runs lint-staged (ESLint + Prettier) + type-check on staged files
+- Added `application/babel.config.js` required by jest-expo transformer
+- Created `application/src/__tests__/sanity.test.ts` — baseline test to confirm runner wiring
+
+### How to verify
+```sh
+cd application && npm install
+npm run lint        # ESLint + Prettier check pass
+npm run type-check  # zero TypeScript errors
+npm run test        # sanity test passes (1 + 1 = 2)
+```
+
+---
+
 ## [0.0.2] — 2026-02-27
 
 ### Changed (internal)

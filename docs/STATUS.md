@@ -10,19 +10,17 @@
 ### What works end-to-end
 - Expo scaffold boots on iOS and Android simulators (`npm start`)
 - expo-router file-based routing is wired up (`app/_layout.tsx`, `app/index.tsx`)
-- ESLint runs via `npm run lint` (eslint-config-expo)
+- ESLint + Prettier run via `npm run lint` / `npm run format`
+- Jest runs via `npm run test` (jest-expo preset, sanity test passes)
+- TypeScript strict mode (`strict: true`) confirmed + `npm run type-check` wired up
+- husky pre-commit hook fires lint-staged + type-check on every commit
 - New Architecture (Fabric + JSI) enabled
 - React Compiler (auto-memoization) enabled
 
 ### What is in progress
-- Nothing — infrastructure setup is the immediate next priority
+- Nothing — tooling foundation is complete
 
 ### What does NOT exist yet
-- `docs/` living docs were just created (this iteration)
-- `docs/prompts/bootstrap.md` was just created (this iteration)
-- Prettier / consistent formatting config
-- Jest + `@testing-library/react-native`
-- husky + lint-staged pre-commit hooks
 - GitHub Actions CI workflow
 - EAS Build configuration (`eas.json`)
 - `application/src/` feature-folder structure (app still using scaffold layout)
@@ -33,9 +31,9 @@
 
 ## Next 3 priorities
 
-1. **Tooling foundation** — add Prettier, Jest, husky + lint-staged, TypeScript strict mode
-2. **CI/CD** — GitHub Actions (lint + type-check + test on PR; EAS Build on merge)
-3. **v0.1 Profile screen** — photo + "Ray Parkar" title, with a smoke test
+1. **CI/CD** — GitHub Actions (lint + type-check + test on PR; EAS Build on merge)
+2. **v0.1 Profile screen** — photo + "Ray Parkar" title, with a smoke test
+3. **Backend scaffold** — Fastify API skeleton under `backend/`
 
 ---
 
@@ -43,9 +41,7 @@
 
 | Issue | Location | Notes |
 |-------|----------|-------|
-| `app/index.tsx` is a blank placeholder | `application/app/index.tsx:3` | Replace with Profile screen in priority 3 |
-| `app-example/` directory still present | `application/app-example/` | Leftover Expo scaffold demo — safe to delete when cleaning up |
-| No `tsconfig.json` strict mode | `application/tsconfig.json` | `strict: true` not yet confirmed; verify before tooling PR |
+| `app/index.tsx` is a blank placeholder | `application/app/index.tsx:3` | Replace with Profile screen in priority 2 |
 
 ---
 
