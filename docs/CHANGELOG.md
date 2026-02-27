@@ -5,6 +5,23 @@
 
 ---
 
+## [0.0.5] — 2026-02-27
+
+### Fixed
+- B-1: lint-staged globs changed from `*.{ts,tsx}` to `**/*.{ts,tsx}` (and `*.{js,json,md}` → `**/*.{js,json,md}`) so files in subdirectories are correctly picked up by the pre-commit hook
+- B-2: Removed stale `app-example/` entry from `application/.prettierignore`
+- B-3: Corrected CHANGELOG `[0.0.3]` description — type-check runs on every commit (all files), not just staged files
+
+### How to verify
+```sh
+cd application
+# Stage a .ts file in a subdirectory and run git commit — ESLint + Prettier should fire on it
+git add src/__tests__/sanity.test.ts
+git commit --allow-empty-message -m ""  # husky fires; lint-staged should process the file
+```
+
+---
+
 ## [0.0.4] — 2026-02-27
 
 ### Changed (internal)
@@ -34,7 +51,7 @@ cd application && npx eas-cli build:configure
 - Added Prettier (`prettier --check/--write` wired into `npm run lint` / `npm run format`)
 - Added Jest via `jest-expo` preset with `@testing-library/react-native`; `npm run test` passes sanity test
 - Added `npm run type-check` (`tsc --noEmit`)
-- Added husky v9 pre-commit hook: runs lint-staged (ESLint + Prettier) + type-check on staged files
+- Added husky v9 pre-commit hook: runs lint-staged (ESLint + Prettier on staged files) + type-check on every commit
 - Added `application/babel.config.js` required by jest-expo transformer
 - Created `application/src/__tests__/sanity.test.ts` — baseline test to confirm runner wiring
 

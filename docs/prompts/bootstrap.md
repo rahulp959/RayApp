@@ -130,9 +130,9 @@ Items flagged during code review that must be resolved before v0.1 ships.
 
 | # | Area | Description | File |
 |---|------|-------------|------|
-| B-1 | Pre-commit | Husky hook runs `cd application && npx lint-staged` — git stages files with repo-root-relative paths (`application/src/file.ts`), so lint-staged executed from within `application/` may double-prefix them (`application/application/src/file.ts`). Fix: add `relative: true` to lint-staged config, run from repo root, or adjust glob patterns. | `application/.husky/pre-commit` |
-| B-2 | Formatting | `.prettierignore` still references `app-example/` which was deleted in the tooling PR. Remove the stale entry. | `application/.prettierignore` |
-| B-3 | Docs | CHANGELOG `[0.0.3]` says the pre-commit hook runs type-check "on staged files" — `tsc --noEmit` checks all TypeScript files, not just staged ones. Correct to: "runs lint-staged (ESLint + Prettier on staged files) + type-check on every commit". | `docs/CHANGELOG.md` |
+| B-1 | Pre-commit | ~~Husky hook lint-staged globs used `*.{ts,tsx}` — `*` doesn't cross directory boundaries in micromatch, so files in subdirectories were silently skipped.~~ **Fixed**: globs changed to `**/*.{ts,tsx}` and `**/*.{js,json,md}`. | `application/package.json` |
+| B-2 | Formatting | ~~`.prettierignore` still references `app-example/` which was deleted in the tooling PR.~~ **Fixed**: stale entry removed. | `application/.prettierignore` |
+| B-3 | Docs | ~~CHANGELOG `[0.0.3]` says the pre-commit hook runs type-check "on staged files".~~ **Fixed**: corrected to "runs lint-staged (ESLint + Prettier on staged files) + type-check on every commit". | `docs/CHANGELOG.md` |
 
 ---
 
@@ -142,3 +142,4 @@ Items flagged during code review that must be resolved before v0.1 ships.
 |---------|------|--------|
 | 0.1 | 2026-02-27 | Initial bootstrap specification |
 | 0.2 | 2026-02-27 | Added §8 Backlog from Copilot review of PR #1 |
+| 0.3 | 2026-02-27 | Resolved all §8 backlog items (B-1, B-2, B-3) |
