@@ -12,6 +12,7 @@
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "test": "jest --watchAll=false",
+    "screenshot": "xcrun simctl io booted screenshot ../docs/screenshots/latest.png && echo 'Saved to docs/screenshots/latest.png'",
     "prepare": "cd .. && husky application/.husky"
   },
   "dependencies": {
