@@ -5,6 +5,31 @@
 
 ---
 
+## [0.0.6] — 2026-02-27
+
+### Added (user-visible)
+- Profile screen: placeholder avatar (blue circle, "RP" initials) + "Ray Parkar" title, centred on screen
+- No navigation bar (header hidden)
+
+### Added (internal)
+- `src/features/profile/ProfileScreen.tsx` — v0.1 profile feature component
+- `src/features/profile/__tests__/ProfileScreen.test.tsx` — 2 smoke tests (renders + name visible)
+- `app/index.tsx` now delegates to `ProfileScreen` via `@/src/features/profile/ProfileScreen`
+- `app/_layout.tsx` sets `headerShown: false`
+- Feature-folder pattern established under `src/features/`
+
+### How to verify
+```sh
+cd application && npm start   # screen shows blue circle + "Ray Parkar"
+npm test                       # 3 tests pass (sanity + 2 profile smoke tests)
+```
+
+### Swap in real photo
+1. Add `application/assets/images/profile.jpg`
+2. Follow the comment in `ProfileScreen.tsx:6-9`
+
+---
+
 ## [0.0.5] — 2026-02-27
 
 ### Fixed
