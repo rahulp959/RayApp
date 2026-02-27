@@ -5,6 +5,29 @@
 
 ---
 
+## [0.0.4] — 2026-02-27
+
+### Changed (internal)
+- Added `.github/workflows/ci.yml` — runs lint + type-check + Jest on every PR and push to master
+- Added `.github/workflows/build.yml` — triggers EAS Build (preview, Android APK) on successful CI run on master via `workflow_run`
+- Added `application/eas.json` — EAS Build config with `preview` profile (`distribution: internal`, `buildType: apk`)
+- Added `docs/adr/0001-ci-cd-pipeline.md` — records Node 22 choice, two-file workflow design, and Android-only initial build decision
+
+### Manual steps required
+```sh
+# 1. Create EXPO_TOKEN at expo.dev → Settings → Access Tokens
+# 2. Add secret to GitHub repo → Settings → Secrets → EXPO_TOKEN
+# 3. Initialize EAS project:
+cd application && npx eas-cli build:configure
+# Commit the updated app.json (adds projectId), then push
+```
+
+### How to verify
+- Open a PR → CI workflow fires; lint + type-check + tests must pass
+- Merge to master → EAS Build workflow triggers; check expo.dev/builds for APK job
+
+---
+
 ## [0.0.3] — 2026-02-27
 
 ### Changed (internal)

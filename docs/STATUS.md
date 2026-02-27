@@ -14,15 +14,15 @@
 - Jest runs via `npm run test` (jest-expo preset, sanity test passes)
 - TypeScript strict mode (`strict: true`) confirmed + `npm run type-check` wired up
 - husky pre-commit hook fires lint-staged + type-check on every commit
+- GitHub Actions CI workflow runs lint + type-check + tests on every PR and push to master
+- EAS Build workflow triggers on successful CI run on master (Android APK, preview profile)
 - New Architecture (Fabric + JSI) enabled
 - React Compiler (auto-memoization) enabled
 
 ### What is in progress
-- Nothing — tooling foundation is complete
+- Nothing — CI/CD foundation is complete (manual EXPO_TOKEN + EAS project init steps remain)
 
 ### What does NOT exist yet
-- GitHub Actions CI workflow
-- EAS Build configuration (`eas.json`)
 - `application/src/` feature-folder structure (app still using scaffold layout)
 - Profile screen (v0.1 feature — photo + "Ray Parkar" title)
 - `backend/` directory
@@ -31,7 +31,7 @@
 
 ## Next 3 priorities
 
-1. **CI/CD** — GitHub Actions (lint + type-check + test on PR; EAS Build on merge)
+1. **EAS project init** — `cd application && npx eas-cli build:configure`, add `EXPO_TOKEN` secret to GitHub
 2. **v0.1 Profile screen** — photo + "Ray Parkar" title, with a smoke test
 3. **Backend scaffold** — Fastify API skeleton under `backend/`
 
