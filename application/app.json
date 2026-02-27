@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "RayApp",
-    "slug": "RayApp",
+    "slug": "rayapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -43,6 +43,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "613d401f-d5ae-4231-8c7c-c65c36213204"
+      }
+    },
+    "owner": "rbc-digital-ltd"
   }
 }

@@ -10,7 +10,7 @@
 
 | # | Title | Status | Date |
 |---|-------|--------|------|
-| — | *(no decisions recorded yet)* | — | — |
+| [0001](0001-ci-cd-pipeline.md) | CI/CD Pipeline — GitHub Actions + EAS Build | accepted | 2026-02-27 |
 
 ---
 
