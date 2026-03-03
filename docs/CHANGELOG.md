@@ -24,6 +24,10 @@ cd application && npm start   # screen shows blue circle + "Ray Parkar"
 npm test                       # 3 tests pass (sanity + 2 profile smoke tests)
 ```
 
+### Screenshot
+
+![Profile screen](screenshots/v0.1.0-profile-screen.png)
+
 ### Swap in real photo
 1. Add `application/assets/images/profile.jpg`
 2. Follow the comment in `ProfileScreen.tsx:6-9`
