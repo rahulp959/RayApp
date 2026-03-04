@@ -5,6 +5,25 @@
 
 ---
 
+## [0.0.7] — 2026-03-04
+
+### Changed (internal)
+- `application/eas.json`: moved `distribution` into per-platform blocks; iOS set to `store` (TestFlight), Android remains `internal` (APK)
+- `application/app.json`: added `ios.bundleIdentifier: "com.rbcdigital.rayapp"`
+- `.github/workflows/build.yml`: switched `--platform android` to `--platform all`
+- Added `docs/adr/0002-ios-distribution.md` — records TestFlight choice over Ad Hoc and simulator-only
+
+### Manual steps required
+```sh
+# 1. Create app in App Store Connect (bundle ID: com.rbcdigital.rayapp)
+# 2. Provision iOS credentials:
+cd application && npx eas-cli credentials --platform ios
+# 3. After first successful build, submit to TestFlight:
+npx eas-cli submit --platform ios --latest
+```
+
+---
+
 ## [0.0.6] — 2026-02-27
 
 ### Added (user-visible)
