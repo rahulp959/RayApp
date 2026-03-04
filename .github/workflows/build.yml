@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: EAS Build — preview (Android)
+    name: EAS Build — preview (Android + iOS)
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     defaults:
@@ -38,5 +38,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (preview — Android)
-        run: eas build --profile preview --platform android --non-interactive --no-wait
+      - name: Build (preview — Android + iOS)
+        run: eas build --profile preview --platform all --non-interactive --no-wait
